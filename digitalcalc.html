@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Calculator result</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="digitalcalc">
+            <div class="display">
+                <div class="lcds-wrapper">
+                    <!--   <div class="backlight">888888888888888</div> -->
+                    <div class="digits-calc lcd-screening"></div>
+                </div>
+                <div class="lcds-wrapper-extra">
+                    <div class='lcds-extra'>
+                        <div class="error hidden">e</div>
+                        <div class="current-operation">
+                            <div class="operation-so-far lcd-screening">0</div> <!-- 8888888888888888888888888888888 -->
+                        </div>
+                    </div>
+                    <!-- <div class="digits-calc">1255.45 </div> -->
+                </div>
+                <div class="gloss"></div>
+            </div>
+            <div class="buttons-memory">
+                <button type='button' class='type-m-c'>MC</button>
+                <button type='button' class='type-m-r'>MR</button>
+                <button type='button' class='type-m-a'>M+</button>
+                <button type='button' class='type-m-s'> M-</button>
+                <button type='button' class='type-m-st'>MS</button>
+                <button type='button' class='type-m-h'>M &#8681</button>
+                <button type='button' class='type-h'>H</button>
+            </div>
+            <div class='cards buttons-other'>
+                <div class="card card-buttons buttonrows">
+                    <div class="buttons-digits-row buttons-digits-row-1">
+                        <button type='button' class='type-op-p'>%</button>
+                        <button type='button' class='type-op-ce'>CE</button>
+                        <button type='button' class='type-op-c'>C</button>
+                        <button type='button' class='type-bkspc'>&#8678</button>
+                    </div>
+                    <div class="buttons-digits-row buttons-digits-row-2">
+                        <button type='button' class='type-op-1px'><sup>1</sup>/<sub>x</sub></button>
+                        <button type='button' class='type-op-xpow2'>x<sup>2</sup></button>
+                        <button type='button' class='type-op-sqrt'>&radic;<span class='type-op-sqrt'
+                                style="text-decoration: overline">x</span></button>
+                        <button type='button' class='type-op-d'>÷</button>
+                    </div>
+                    <div class="buttons-digits-row buttons-digits-row-3">
+                        <button type='button' class='button-number type-num-7'>7</button>
+                        <button type='button' class='button-number type-num-8'>8</button>
+                        <button type='button' class='button-number border-round-right-top type-num-9'>9</button>
+
+                        <button type='button' class='button-operation type-op-m'>×</button>
+                    </div>
+                    <div class="buttons-digits-row buttons-digits-row-4">
+                        <button type='button' class='button-number type-num-4'>4</button>
+                        <button type='button' class='button-number type-num-5'>5</button>
+                        <button type='button' class='button-number type-num-6'>6</button>
+                        <button type='button' class='button-operation type-op-s'>-</button>
+                    </div>
+                    <div class="buttons-digits-row buttons-digits-row-5">
+                        <button type='button' class='button-number type-num-1'>1</button>
+                        <button type='button' class='button-number type-num-2'>2</button>
+                        <button type='button' class='button-number border-round-right-bottom type-num-3'>3</button>
+                        <button type='button' class='button-operation type-op-a'>+</button>
+                    </div>
+                    <div class="buttons-digits-row buttons-digits-row-6">
+                        <button type='button' class='type-chs'>+/-</button>
+                        <button type='button' class='button-number type-num-0'>0</button>
+                        <button type='button' class='type-dot'>.</button>
+                        <button type='button' class='button-operation type-op-e'>=</button>
+                    </div>
+                </div>
+                <div
+                    class="card card-operations-history border-round-left-bottom border-round-right-bottom hidden">
+                    <div class="scroller history-scroller"></div>
+                </div>
+                <div class="card card-memory-history border-round-left-bottom border-round-right-bottom hidden">
+                    <div class="scroller memory-scroller"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src='js/digitalcalc.js'></script>
+    <link rel="stylesheet" href="css/digitalcalc.css">
+</body>
+
+</html>

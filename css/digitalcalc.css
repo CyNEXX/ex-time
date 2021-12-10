@@ -1,0 +1,345 @@
+@font-face {
+    font-family: "LCD-MONO";
+    src: url("../fonts/lcd-mono.ttf") format("truetype");
+}
+
+/* calc rtio should be ~0.75*/
+
+:root {
+    --background-blue: #1f3a93;
+    --background-blue-transparent: rgba(31, 58, 147, 0.4);
+    --active-led: #89c4f4;
+    /* --inactive-led: #3a539b; */
+    --inactive-led: rgba(58, 83, 155, 0.2);
+    --inactive-led-opaque: rgba(58, 83, 155, 1);
+    --normal-led-size: 4rem;
+    --normal-button-height: 5.4rem;
+    --background-dark: #3a539b; /* #2c3e50; */
+    --background-dark2: #446cb3; /* #34495e; */
+    --background-radial: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    --color-light: #6bb9f0; /* #e4f1fe; */
+    --color-bright: #e4f1fe;
+    --color-dark: rgba(34, 49, 63, 1);
+    --calc-width: 30rem;
+    --calc-height: 75vh;
+    --dimension-max-height: 52.5rem;
+    --dimension-max-width: 30rem;
+    --calc-ratio: 0.75;
+}
+
+body {
+    font-family: LCD-MONO;
+    margin: 0;
+    scrollbar-face-color: var(--active-led) !important;
+    scrollbar-arrow-color: #ffffff;
+    scrollbar-track-color: var(--inactive-led) !important;
+    scrollbar-shadow-color: "";
+    scrollbar-highlight-color: "";
+    scrollbar-3dlight-color: "";
+    scrollbar-darkshadow-color: "";
+}
+
+.gloss {
+    display: none;
+    width: 100%;
+    height: 100% !important;
+    top: 0rem;
+    left: 0rem;
+
+    position: absolute;
+    background: rgb(34, 49, 63, 0.5);
+    background: linear-gradient(
+        45deg,
+        rgba(34, 49, 63, 0.1) 0%,
+        rgba(34, 49, 63, 0.1) 36%,
+        rgba(255, 255, 255, 1) 36%,
+        rgba(255, 255, 255, 1) 45%,
+        rgba(34, 49, 63, 0.1) 45%,
+        rgba(34, 49, 63, 0.1) 72%,
+        rgba(255, 255, 255, 1) 72%,
+        rgba(255, 255, 255, 1) 73%,
+        rgba(255, 255, 255, 1) 75%,
+        rgba(39, 49, 63, 0.1) 75%,
+        rgba(34, 49, 63, 0.1) 100%
+    );
+}
+
+.main {
+    display: flex;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        49deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(45, 4, 70, 1) 14%,
+        rgba(20, 8, 106, 1) 20%,
+        rgba(9, 9, 121, 1) 42%,
+        rgba(6, 75, 165, 1) 68%,
+        rgba(0, 212, 255, 1) 100%
+    );
+    background: rgb(238, 174, 202);
+    background: var(--background-radial);
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.digitalcalc {
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    /* height: var(--normal-led-size); */
+   /*  width: calc(var(--calc-height) * 0.75); */
+   /*  max-height: var(--dimension-max-height); */
+    width: 50vh;
+    height: var(--dimension-max-height);
+    font-size: calc(var(--normal-led-size) * 0.75);
+    background-color: var(--background-blue-transparent);
+    text-align: center;
+    -webkit-box-shadow: 5px 5px 23px 7px rgba(0, 0, 0, 0.45);
+    box-shadow: 5px 5px 23px 7px rgba(0, 0, 0, 0.45);
+    /* padding: 0.1rem; */
+    border-radius: 1rem;
+}
+
+.lcds-wrapper {
+    position: relative;
+}
+
+.display {
+    position: relative;
+    padding: 1rem;
+    height: 15%;
+    background-color: var(--color-dark) !important;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.display > div {
+    height: 4rem;
+}
+
+.actualnumbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: end;
+    width: 100%;
+    height: 10%;
+}
+
+.digits-calc {
+    /*  padding: 3rem; */
+    top: 0;
+    left: 0;
+    text-align: end;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    color: var(--color-light);
+}
+
+.backlight {
+    text-align: end;
+    color: var(--inactive-led);
+
+    background-color: transparent;
+}
+
+.extra {
+    position: absolute;
+    flex-direction: column;
+    display: flex;
+    right: 0;
+    top: 0;
+    font-size: calc(var(--normal-led-size) / 3);
+    padding-right: 2rem;
+    color: var(--inactive-led);
+}
+
+.active {
+    color: var(--active-led);
+}
+
+.buttons-digits {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttons-digits > button {
+    width: 25%;
+    height: 100%;
+    text-align: justify;
+    vertical-align: middle;
+}
+
+button {
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    color: var(--color-light);
+}
+
+.buttons-memory {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    height: 5%;
+    justify-content: space-between;
+    background-color: var(--background-dark);
+}
+
+.buttons-memory > button {
+    font-size: calc(var(--normal-led-size) / 3);
+    line-height: 1rem;
+}
+
+.buttons-digits-row {
+    display: flex;
+    gap: 0.05rem;
+    flex-grow: 4;
+    /* margin: 0.05rem; */
+}
+
+.buttons-digits-row > button {
+    /* background-color: var(--background-dark2); */
+    height: 100%;
+    width: 100%;
+    margin: 0.05rem;
+    font-size: calc(var(--normal-led-size) / 3);
+    color: var(--color-bright);
+}
+
+.buttons-other {
+    position: relative;
+    gap: 0.1rem 0.1rem;
+    /*   height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 2;
+}
+
+.buttonrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 2;
+    gap: 0.05rem;
+}
+
+.button-number {
+    background-color: var(--background-dark) !important;
+}
+
+.border-round-right-top {
+    border-top-right-radius: 1rem;
+}
+
+.border-round-right-bottom {
+    border-bottom-right-radius: 1rem;
+}
+
+.border-round-left-top {
+    border-top-left-radius: 1rem;
+}
+
+.border-round-left-bottom {
+    border-bottom-left-radius: 1rem;
+}
+
+.card-operations-history,
+.card-memory-history {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-dark) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.scroller {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: var(--color-light);
+}
+
+.scroller > div {
+    margin: 0.25rem 1rem 0 1rem;
+    font-size: calc(var(--normal-led-size) / 3);
+    text-align: right;
+}
+
+.lcds-wrapper-extra {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* font-size: calc(var(--normal-led-size) / 2); */
+}
+
+.lcds-extra {
+    padding: 1rem;
+    font-size: calc(var(--normal-led-size) / 3);
+    color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
+button:disabled {
+    color: var(--color-dark);
+}
+
+.current-operation {
+    width: 100%;
+    display: flex;
+    margin-left: auto;
+    position: relative;
+}
+
+.operation-so-far {
+    margin-left: auto;
+    width: 100%;
+    text-align: end;
+}
+
+.error {
+    margin-right: auto;
+}
+
+.digits-calc.lcd-screening::after {
+    top: 0;
+    left: 0;
+    text-align: end;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    color: var(--inactive-led);
+    content: "888888888888888";
+}
+
+.operation-so-far.lcd-screening::after {
+    top: 0;
+    left: 0;
+    text-align: end;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    color: var(--inactive-led);
+    content: "888888888888888888888888888888888888888888888";
+}
